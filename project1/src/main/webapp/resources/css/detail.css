@@ -8,8 +8,7 @@ font-weight: 400;
 .writeDiv{
 	margin: 0 auto;
 	width: 800px;
-	min-height: 500px;
-	height: auto;
+	height: 500px;
 	background-color: #FFCDD2;	
 	padding: 10px;
 }
@@ -36,7 +35,7 @@ textarea {
 
 
 .button{
-
+	margin: 10px 40px;
 }
 
 .button:hover {
