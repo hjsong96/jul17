@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+*{
+font-family: Sandoll Studywithme;
+font-weight: 400;
+}
+
+.button:hover {
+	background-color:#EF9A9A;
+	transition: 0.5s;
+}
