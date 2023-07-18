@@ -23,6 +23,7 @@
 		<button onclick="location.href='login.jsp'">로그인</button>
 	</div>
 		<!-- TEST -->
+		<!-- TEST -->
 		
 </body>
 </html>
