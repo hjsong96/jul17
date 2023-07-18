@@ -22,7 +22,7 @@
 		<input type="password" name="pw">
 		<button onclick="location.href='login.jsp'">로그인</button>
 	</div>
-		
+		<!-- TEST -->
 		
 </body>
 </html>
