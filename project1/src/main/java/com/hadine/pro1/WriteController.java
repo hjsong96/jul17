@@ -19,8 +19,10 @@ public class WriteController {
 	@PostMapping("/write")
 	public String write2(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println(request.getParameter("title"));
-		System.out.println(request.getParameter("content"));
+		//System.out.println(request.getParameter("title"));
+		//System.out.println(request.getParameter("content"));
+		String content = request.getParameter("content");
+		content = content.replaceAll("/n", "<br>");
 		return "board";
 	}
 	
