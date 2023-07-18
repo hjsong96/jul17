@@ -26,7 +26,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-</head>
+</head>  
 <body>
 <%@ include file="menu.jsp" %>
 	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px; font-weight:bold; font-family: Sandoll Studywithme;">Board 화면입니다.</h1>
