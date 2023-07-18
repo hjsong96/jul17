@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class BoardController {
@@ -36,4 +37,33 @@ public class BoardController {
 		
 		return "detail";
 	}
+	
+	@GetMapping("/write")
+	public String write() {
+		return "write";
+	}
+	
+	@PostMapping("/write")
+	public String write2(HttpServletRequest request) throws Exception {
+		//request.setCharacterEncoding("UTF-8");
+		//사용자가 입려한 데이터 변수에 담기
+		//System.out.println(request.getParameter("title"));
+		//System.out.println(request.getParameter("content"));
+		//System.out.println("============================");
+		
+		BoardDTO dto = new BoardDTO();
+		dto.setBtitle(request.getParameter("title"));
+		dto.setBcontent(request.getParameter("content"));
+		dto.setBwrite("말랭이"); //이건 임시로 적었습니다. 로그인 추가되면 변경 예정
+		
+		//Service -> DAO -> mybatis -> DB 로 보내서 저장하기
+		boardService.write(dto);
+		
+		//String content = request.getParameter("content");
+		//content = content.replaceAll("/n", "<br>");
+		
+		return "redirect:board"; //다시 컨트롤러 지나가기 GET 방식으로 갑니다. 
+	}
+	
+	
 }

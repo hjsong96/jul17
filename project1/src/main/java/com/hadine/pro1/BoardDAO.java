@@ -23,7 +23,11 @@ public class BoardDAO {
 	}
 
 	public BoardDTO detail(String bno) {
-		return sqlSession.selectOne("board.detail", bno); //뒤에 bno String 타입
+		return sqlSession.selectOne("board.detail", bno); //뒤에 bno String 타입, 
 	}
-	
+
+	public void write(BoardDTO dto) {
+		sqlSession.insert("board.write", dto); //네임스페이스.id, 값
+	}
+
 }

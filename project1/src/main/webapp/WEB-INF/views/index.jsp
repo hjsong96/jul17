@@ -12,7 +12,15 @@
 <body>
 <%@ include file="menu.jsp" %>
 	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px;font-weight:bold;">메인 화면입니다.</h1>
+	<div>
 		<img alt="surprise" src="./img/surprise.gif" height="100px";>
-	<button class="button" onclick="location.href='./board'">게시판</button>
+	</div>
+	<div id="loginBox">
+		<input type="text" id="id">
+		<input type="password" name="pw">
+		<button onclick="location.href='login.jsp'">로그인</button>
+	</div>
+		
+		
 </body>
 </html>

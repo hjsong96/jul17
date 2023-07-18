@@ -14,19 +14,21 @@ font-weight: 400;
 	padding: 10px;
 }
 
-input{
-	margin: 10px;
+.writeDiv input{
+	margin: 0px;
 	padding: 0px;
 	border: 0px;	
-	width: 777px;
+	width: 779px;
 	height:30px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
 }
 
-textarea {
+.writeDiv textarea {
+	margin: 0px;
 	padding: 0px;
 	border: 0px;
 	width: 800px;
-	height:460px;
 	margin: 10px 0px;
 }
 
@@ -34,9 +36,9 @@ textarea {
 	text-align: center;
 }
 
-
 .button{
-
+	margin: 0px;
+	padding: 0px;
 }
 
 .button:hover {

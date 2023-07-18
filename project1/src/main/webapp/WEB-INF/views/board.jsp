@@ -16,7 +16,6 @@
 	<div>
 	<img alt="heart" src="./img/heart.gif" height="100px";>
 	</div>
-	<button class="button" onclick="location.href='./index'">메인화면</button>
 	<table>
 		<tr>
 			<th>번호</th>

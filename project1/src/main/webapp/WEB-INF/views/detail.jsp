@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@ include file="menu.jsp" %>
-	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px;font-weight:bold;">${dto.bwrite }님의 게시글입니다.</h1>
+	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px; font-weight:bold;">${dto.bwrite }님의 게시글입니다.</h1>
 	<div class="img">
 		<img alt="mind" src="./img/mind.gif" height="100px";>
 	</div>

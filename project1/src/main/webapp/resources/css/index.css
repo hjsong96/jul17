@@ -9,3 +9,7 @@ font-weight: 400;
 	background-color:#EF9A9A;
 	transition: 0.5s;
 }
+
+div {
+	text-align: center;
+}
