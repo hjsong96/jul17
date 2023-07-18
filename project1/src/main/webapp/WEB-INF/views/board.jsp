@@ -9,6 +9,8 @@
 <title>Board</title>
 <link rel = "stylesheet" href="./css/menu.css">
 <link rel = "stylesheet" href="./css/board.css">
+<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="./img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%@ include file="menu.jsp" %>
