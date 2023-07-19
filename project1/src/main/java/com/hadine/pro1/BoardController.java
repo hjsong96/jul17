@@ -55,7 +55,7 @@ public class BoardController {
 		// System.out.println(request.getParameter("content"));
 		// System.out.println("============================");
 
-		BoardDTO dto = new BoardDTO();
+		BoardDTO dto = new BoardDTO(); 
 		dto.setBtitle(request.getParameter("title"));
 		dto.setBcontent(request.getParameter("content"));
 		dto.setBwrite("말랭이"); // 이건 임시로 적었습니다. 로그인 추가되면 변경 예정
