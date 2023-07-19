@@ -42,7 +42,7 @@ public class BoardService {
 			// 끝.
 			// 172.30.1.19 ----> 172.♡.1.19
 		}
-		return dto;
+		return dto;  
 	}
 
 	// 글쓰기입니다.
