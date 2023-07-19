@@ -66,6 +66,7 @@ public class BoardController {
 		// content = content.replaceAll("/n", "<br>");
 
 		return "redirect:board"; // 다시 컨트롤러 지나가기 GET 방식으로 갑니다.
+		
 	}
 
 	//삭제가 들어온다면 http://172.30.1.19/delete?bno=150
