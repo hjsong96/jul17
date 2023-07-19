@@ -1,12 +1,16 @@
 package com.hadine.pro1;
 
+import java.util.Arrays;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BoardController {
@@ -31,6 +35,7 @@ public class BoardController {
 		String bno = request.getParameter("bno");
 		// bno 에 요청하는 값이 있습니다. 이 값을 db까지 보내겠습니다.
 		// System.out.println("bno: " + bno);
+
 		BoardDTO dto = boardService.detail(bno);
 		model.addAttribute("dto", dto);
 
@@ -50,48 +55,31 @@ public class BoardController {
 		// System.out.println(request.getParameter("content"));
 		// System.out.println("============================");
 
-		// 상대방 ip 가져오기
-		String ip = null; // 192.168.0.0 -> HttpServletRequest 가 있어야 합니다.
-
-		ip = request.getHeader("X-Forwarded-For"); // 헤더족을 읽어서 forwarded ip 뽑을 것이다.
-
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("Proxy-Client-IP");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("WL-Proxy-Client-IP");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("HTTP_CLIENT_IP");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("X-Real-IP");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("X-RealIP");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("REMOTE_ADDR");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getRemoteAddr();
-		}
-
 		BoardDTO dto = new BoardDTO();
 		dto.setBtitle(request.getParameter("title"));
-		dto.setBcontent(ip + request.getParameter("content"));
+		dto.setBcontent(request.getParameter("content"));
 		dto.setBwrite("말랭이"); // 이건 임시로 적었습니다. 로그인 추가되면 변경 예정
 
 		// Service -> DAO -> mybatis -> DB 로 보내서 저장하기
 		boardService.write(dto);
-
 		// String content = request.getParameter("content");
 		// content = content.replaceAll("/n", "<br>");
 
 		return "redirect:board"; // 다시 컨트롤러 지나가기 GET 방식으로 갑니다.
 	}
 
+	//삭제가 들어온다면 http://172.30.1.19/delete?bno=150
+	@GetMapping("/delete")
+	public String delete(@RequestParam(value = "bno", required = false, defaultValue = "0") int bno) { //HttpServletRequest 의 getParameter();
+		//System.out.println("bno: " + bno);
+		//dto
+		BoardDTO dto = new BoardDTO();
+		dto.setBno(bno);
+		//dto.setBwrite(null); 사용자 정보
+		//추후 로그인을 하면 사용자의 정보도 담아서 보냅니다.
+		
+		boardService.delete(dto);
+		
+		return "redirect:board"; //삭제를 완료한 후에 다시 보드로 갑니다. 
+	}
 }

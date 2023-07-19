@@ -10,12 +10,23 @@
 <link rel = "stylesheet" href="./css/detail.css">
 <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+<script type="text/javascript">
+	function del() {
+		let chk = confirm("삭제하시겠습니까?"); //참 거짓으로 나옵니다.
+		//alert(chk);
+		if (chk == true) {
+			location.href="./delete?bno=${dto.bno }"
+		}
+	}
+</script>
 </head>
 <body>
 <%@ include file="menu.jsp" %>
 	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px; font-weight:bold;">${dto.bwrite }님의 게시글입니다.</h1>
 	<div class="img">
-		<img alt="mind" src="./img/mind.gif" height="100px";>
+		<img alt="mind" src="./img/mind.gif" height="100px";><br>
+		<img alt="수정" src="./img/edit.png" onclick="edit()"> &nbsp;
+		<img alt="삭제" src="./img/delete.png" onclick="del()">
 	</div>
 	
 	<div class="detail-content">
@@ -24,7 +35,7 @@
 			<div class="name">${dto.bwrite }님</div>
 			<div class="like">${dto.blike }</div>
 			<div class="date">${dto.bdate }</div>
-			<div class="ip">아직없음</div>
+			<div class="ip">${dto.bip }</div>
 		</div>
 			<div class="content">${dto.bcontent }</div>
 		<button class="button" onclick="location.href='./board'">게시판</button>
