@@ -46,7 +46,7 @@ public class BoardService {
 	}
 
 	// 글쓰기입니다.
-	public void write(BoardDTO dto) {
+	public void write(BoardDTO dto) {  
 		// btitle 을 꺼내줍니다.
 		// dto.getBtitle()
 		//String btitle = dto.getBtitle();
