@@ -7,8 +7,7 @@
 			<li onclick="link('board2')">게시판2</li>
 			<li onclick="link('mooni')">문의사항</li>
 			<li onclick="link('notice')">공지</li>
-			<li></li>
-			<li onclick="link('notice')">공지</li>
+			<li onclick="link('login')" style="float: right; margin-top: 10px;"><img alt="login" src="./img/login.png"></li>
 		</ul>
 	</nav>
 	<!-- <div style="heightL=:50px; width: 100%;"></div> -->
