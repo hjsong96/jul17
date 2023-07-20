@@ -46,6 +46,11 @@ public class BoardController {
 
 		return "detail";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 
 	@GetMapping("/write")
 	public String write() {
