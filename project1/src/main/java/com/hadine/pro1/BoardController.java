@@ -1,6 +1,6 @@
 package com.hadine.pro1;
 
-import java.util.Arrays;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BoardController {
@@ -19,6 +20,9 @@ public class BoardController {
 	// Autowired 말고 Resource 로 연결
 	@Resource(name = "boardService")
 	private BoardService boardService;
+	
+	@Autowired
+	private Util util; //우리가 만든 숫자변환을 사용하기 위해서 객체 연결했어요.
 
 	@GetMapping("/board")
 	public String board(Model model) {
@@ -32,7 +36,8 @@ public class BoardController {
 	// 파라미터로 들어오는 값 잡기
 	@GetMapping("/detail") // Model 은 jsp 에 값을 붙이기 위해 넣었습니다.
 	public String detail(HttpServletRequest request, Model model) {
-		String bno = request.getParameter("bno");
+		//String bno = request.getParameter("bno");
+		int bno = util.strToInt(request.getParameter("bno"));
 		// bno 에 요청하는 값이 있습니다. 이 값을 db까지 보내겠습니다.
 		// System.out.println("bno: " + bno);
 
@@ -83,4 +88,32 @@ public class BoardController {
 		
 		return "redirect:board"; //삭제를 완료한 후에 다시 보드로 갑니다. 
 	}
+	
+	//수정하기, 로그인하기 만들기
+	@GetMapping("/edit")
+	public ModelAndView edit(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("edit"); //edit.jsp
+		//데이터베이스에서 bno를 보내서 dto 를 얻어옵니다. 
+		BoardDTO dto = boardService.detail(util.strToInt(request.getParameter("bno")));   //글 전체내용 불러오는 detail(bno)
+		//mv에 실어보냅니다. 
+		mv.addObject("dto", dto);
+		return mv;
+	}
+	
+	@PostMapping("/edit")
+	public String edit(BoardDTO dto) {
+		//System.out.println("map: " + map);
+		System.out.println(dto.getBtitle());
+		System.out.println(dto.getBcontent());
+		System.out.println(dto.getBno());
+		
+		boardService.edit(dto);
+		
+		
+		return "redirect:detail?bno="+dto.getBno(); //해당 글로 다시 돌아가
+	}
+	
+	
+	
+	
 }

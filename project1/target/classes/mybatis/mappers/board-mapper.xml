@@ -11,7 +11,7 @@
 	</select>
 	
 	<!-- #{변수명}을 적어주면 변수가 들어가요  -->
-	<select id="detail" parameterType="String" resultType="boardDTO">
+	<select id="detail" parameterType="Integer" resultType="boardDTO">
 		SELECT * FROM board WHERE bno =#{bno}
 	</select>
 	
@@ -24,5 +24,10 @@
 	<delete id="delete" parameterType="boardDTO">
 		DELETE FROM board Where bno =#{bno}
 	</delete>
+	
+	<update id="edit" parameterType="boardDTO">
+		UPDATE board SET btitle=#{btitle }, bcontent=#{bcontent }
+		WHERE bno=#{bno}
+	</update>
 	
 </mapper>

@@ -18,6 +18,12 @@
 			location.href="./delete?bno=${dto.bno }"
 		}
 	}
+	
+	function edit() {
+		if (confirm("수정하시겠습니까?")) {
+			location.href="./edit?bno=${dto.bno }"
+		}
+	}
 </script>
 </head>
 <body>

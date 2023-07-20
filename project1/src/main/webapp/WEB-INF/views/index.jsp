@@ -13,14 +13,21 @@
 </head>
 <body>
 <%@ include file="menu.jsp" %>
-	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px;font-weight:bold;">메인 화면입니다.</h1>
+	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px;font-weight:bold;">로그인 화면입니다.</h1>
+	<div id="loginBox">
 	<div>
 		<img alt="surprise" src="./img/surprise.gif" height="100px";>
 	</div>
-	<div id="loginBox">
-		<input type="text" id="id">
-		<input type="password" name="pw">
-		<button onclick="location.href='login.jsp'">로그인</button>
+	<div>
+		<h1></h1>
+		<input type="text" id="id" placeholder="아이디">
+		<input type="password" id="pw" placeholder="비밀번호">
+		<div id="search">
+			<a href="" >아이디 찾기 |</a>	
+			<a href="">비밀번호 찾기 |</a>
+			<a href="">회원가입</a>
+		</div>
+		<button class="button" onclick="location.href='login.jsp'">로&nbsp;&nbsp;&nbsp;그&nbsp;&nbsp;&nbsp;인</button>
 	</div>
 		<!-- TEST -->
 		<!-- TEST -->
