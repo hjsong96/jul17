@@ -5,6 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.hadine.pro1.BoardDTO" alias="boardDTO"/>
-		
+		<typeAlias type="com.hadine.pro1.LoginDTO" alias="loginDTO"/>
 	</typeAliases>
 </configuration>

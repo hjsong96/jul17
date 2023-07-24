@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="./css/menu.css">
 	<nav>
 		<div class="header">
@@ -14,7 +15,15 @@
 			</div>
 			<div class ="right_menu" >
 				<ul>
-					<li onclick="location.href='./login'"><img alt="login" src="./img/login3.png"></li>
+					<c:choose>
+						<c:when test="${sessionScope.mname eq null}">
+							<li onclick="link('login')"><img alt="login" src="./img/login3.png"></li> 
+						</c:when>
+						<c:otherwise>
+							<li onclick="link('myInfo')">${sessionScope.mid }(${sessionScope.mname })님</li>
+							<li onclick="link('logout')"><img alt="login" src="./img/unlock2.png"></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>

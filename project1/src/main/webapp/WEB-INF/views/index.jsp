@@ -13,8 +13,8 @@
 </head>
 <body>
 <%@ include file="menu.jsp" %>
-	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px;font-weight:bold;">메인 화면입니다.</h1>
-	<%=request.getHeader("User-Agent")%>
+	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px;font-weight:bold;">로그인 화면은 상단 자물쇠를 클릭하세요</h1>
+	<%-- <%=request.getHeader("User-Agent")%> --%>
 	<div id="loginBox">
 	<div>
 		<img alt="surprise" src="./img/surprise.gif" height="100px";>

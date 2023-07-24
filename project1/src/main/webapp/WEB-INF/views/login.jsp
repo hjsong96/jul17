@@ -19,15 +19,16 @@
 		<img alt="surprise" src="./img/surprise.gif" height="100px";>
 	</div>
 	<div>
-		<h1></h1>
-		<input type="text" id="id" placeholder="아이디">
-		<input type="password" id="pw" placeholder="비밀번호">
+		<form action="./login" method="post">
+			<input type="text" name="id" id="id" placeholder="아이디">
+			<input type="password" name="pw" id="pw" placeholder="비밀번호">
 		<div id="search">
 			<a href="" >아이디 찾기 |</a>	
 			<a href="">비밀번호 찾기 |</a>
 			<a href="">회원가입</a>
 		</div>
-		<button class="button" onclick="location.href='login.jsp'">로&nbsp;&nbsp;&nbsp;그&nbsp;&nbsp;&nbsp;인</button>
+			<button class="button" onclick="location.href='login.jsp'">로&nbsp;&nbsp;&nbsp;그&nbsp;&nbsp;&nbsp;인</button>
+		</form>
 	</div>
 		<!-- TEST -->
 		<!-- TEST -->

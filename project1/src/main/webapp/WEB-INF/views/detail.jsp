@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html> 
 <html>
 <head>
@@ -28,17 +29,24 @@
 </head>
 <body>
 <%@ include file="menu.jsp" %>
-	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px; font-weight:bold;">${dto.bwrite }님의 게시글입니다.</h1>
+	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px; font-weight:bold;">${dto.m_name }님의 게시글입니다.</h1>
 	<div class="img">
 		<img alt="mind" src="./img/mind.gif" height="100px";><br>
-		<img alt="수정" src="./img/edit.png" onclick="edit()"> &nbsp;
-		<img alt="삭제" src="./img/delete.png" onclick="del()">
 	</div>
-	
+		
+		<div class="edde">
+			<c:if test="${sessionScope.mid ne null && mid eq dto.m_id}">
+				<img alt="수정" src="./img/edit.png" onclick="edit()"> &nbsp;
+				<img alt="삭제" src="./img/delete.png" onclick="del()">
+			</c:if>
+		</div>
+		
 	<div class="detail-content">
 		<div class="title">${dto.bno } / ${dto.btitle }</div>
+
+		
 		<div class="name-bar">
-			<div class="name">${dto.bwrite }님</div>
+			<div class="name">${dto.m_name }님</div>
 			<div class="like">${dto.blike }</div>
 			<div class="date">${dto.bdate }</div>
 			<div class="ip">${dto.bip }</div>

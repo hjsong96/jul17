@@ -18,12 +18,12 @@ public class BoardDAO {
 	private SqlSession sqlSession;
 	
 	
-	public List<Map<String, Object>> boardList() {
+	public List<BoardDTO> boardList() {
 		return sqlSession.selectList("board.boardList");
 	}
 
-	public BoardDTO detail(int bno) {
-		return sqlSession.selectOne("board.detail", bno); //뒤에 bno String 타입, 
+	public BoardDTO detail(BoardDTO dto2) {
+		return sqlSession.selectOne("board.detail", dto2); //뒤에 bno String 타입, 
 	}
 
 	public void write(BoardDTO dto) {
