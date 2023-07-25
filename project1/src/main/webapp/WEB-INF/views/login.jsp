@@ -10,6 +10,41 @@
 <link rel = "stylesheet" href="./css/index.css">
 <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+
+<script type="text/javascript">
+//스크립트 영역
+let text = "<p>올바른 아이디를 입력하세요.</p>"; //전역변수
+//호이스팅이 뭐예요? let vs var? json? const
+
+
+function checkID() {
+	//alert("!");
+	let msg = document.getElementById("msg")
+	msg.innerHTML = "<p>" + document.getElementById("id").value + "아이디를 변경했습니다.</p>"
+}
+
+
+function check() {
+	//alert("!")
+	let msg = document.getElementById("msg");
+	let id = document.getElementById("id"); //id 값 가진거 하나 가져올거야 id는 한개 
+	//alert(id.value); //id 안에서 값 가져올거야
+	//alert(id.value.length); //id 안에서 값 가져올거야
+	if (id.value.length < 2) {
+		alert("아이디는 2글자 이상이어야 합니다.");
+		msg.innerHTML = text;
+		id.focus(); //input창의 id를 의미한다.
+		return false;
+	} 
+	
+	let pw = document.getElementById("pw"); 
+	if (pw.value.length < 2) {
+		alert("암호는 2글자 이상이어야 합니다.");
+		pw.focus();
+		return false;
+	} 
+}
+</script>
 </head>
 <body>
 <%@ include file="menu.jsp" %>
@@ -19,15 +54,16 @@
 		<img alt="surprise" src="./img/surprise.gif" height="100px";>
 	</div>
 	<div>
-		<form action="./login" method="post">
-			<input type="text" name="id" id="id" placeholder="아이디">
+		<form action="./login" method="post" onsubmit="return check()">
+			<input type="text" name="id" id="id" placeholder="아이디" onchange="checkID()" >
 			<input type="password" name="pw" id="pw" placeholder="비밀번호">
 		<div id="search">
 			<a href="" >아이디 찾기 |</a>	
 			<a href="">비밀번호 찾기 |</a>
 			<a href="">회원가입</a>
 		</div>
-			<button class="button" onclick="location.href='login.jsp'">로&nbsp;&nbsp;&nbsp;그&nbsp;&nbsp;&nbsp;인</button>
+			<button type="submit" class="button">로&nbsp;&nbsp;&nbsp;그&nbsp;&nbsp;&nbsp;인</button>
+			<span id="msg"></span>
 		</form>
 	</div>
 		<!-- TEST -->

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,22 +27,31 @@ public class BoardService {
 	}
 
 	public BoardDTO detail(BoardDTO dto2) {
+		//좋아요 수 +1 하기 기능을 넣어주겠습니다. 
+		boardDAO.likeUp(dto2);
+		
 		BoardDTO dto = boardDAO.detail(dto2);
-		// 검사 : . 이 없거나, null이면 실행하지 않게 해주세요.
-		if (dto.getBip() != null && dto.getBip().contains(".")) {
-			// 여기서 ip 뽑아오기 (get ip)
-			String newip = dto.getBip();
-			String[] newip2 = newip.split("\\.");
-			System.out.println(Arrays.toString(newip2));
-			// ip 중간에 하트 넣어주기 (string)
-			newip2[1] = "♡";
-			System.out.println(Arrays.toString(newip2));
-			// 그거 다시 ip에 저장 (set bip)
-			String h = String.join(".", newip2);
-			dto.setBip(h);
-			// 끝.
-			// 172.30.1.19 ----> 172.♡.1.19
-		}
+		//System.out.println(dto);
+		//System.out.println(dto.getBno());
+		//System.out.println(dto.getBip());
+		
+		if (dto != null) {//내 글이 아닐 때 null 들어옵니다. 즉, null 이 아닐 때라고 검사해주세요.
+			// 검사 : . 이 없거나, null이면 실행하지 않게 해주세요.
+			if (dto.getBip() != null && dto.getBip().contains(".")) {
+				// 여기서 ip 뽑아오기 (get ip)
+				String newip = dto.getBip();
+				String[] newip2 = newip.split("\\.");
+				System.out.println(Arrays.toString(newip2));
+				// ip 중간에 하트 넣어주기 (string)
+				newip2[1] = "♡";
+				System.out.println(Arrays.toString(newip2));
+				// 그거 다시 ip에 저장 (set bip)
+				String h = String.join(".", newip2);
+				dto.setBip(h);
+				// 끝.
+				// 172.30.1.19 ----> 172.♡.1.19
+			}
+		} 
 		return dto;  
 	}
 

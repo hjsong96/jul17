@@ -32,7 +32,7 @@
 					<th>제목</th>
 					<th>글쓴이</th>
 					<th>날짜</th>
-					<th>좋아요</th>
+					<th>조회수</th>
 				</tr>
 				<c:forEach items="${list }" var="row">
 					<!-- onclick 자바스크립트 페이지 이동, ?파라미터=값  -->

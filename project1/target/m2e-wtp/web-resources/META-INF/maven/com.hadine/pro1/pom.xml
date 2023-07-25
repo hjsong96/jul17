@@ -14,6 +14,11 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+	<!-- 저장소 만들기 -->
+	
+	
+	
+	
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->

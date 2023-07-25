@@ -26,6 +26,37 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
+<script type="text/javascript">
+
+
+function check() {
+	let msg = document.getElementById("msg")
+	let msg2 = document.getElementById("msg2")
+	
+	let text = "<p>올바른 제목을 입력하세요.</p>";
+	let text2 = "<p>올바른 내용을 입력하세요.</p>";
+	
+	let title = document.getElementById("title");
+	let summernote = document.getElementById("summernote");
+	//alert(title.value)
+	//alert(content.value)
+	
+	if (title.value.length == "") {
+		alert("제목은 1글자 이상이어야 합니다.");
+		msg.innerHTML = text;
+		title.focus();
+		return false;
+	}
+	
+	if (summernote.value.length < 12) {
+		alert("내용은 1글자 이상이어야 합니다.");
+		msg2.innerHTML = text2;
+		summernote.focus();
+		return false;
+	}
+}
+
+</script>
 </head>  
 <body>
 <%@ include file="menu.jsp" %>
@@ -34,11 +65,16 @@
 		<img alt="mind" src="./img/mind.gif" height="100px";>
 	</div>
 	<div class="writeDiv">
-		<form action="./write" method="post">
-			<input type="text" name="title" placeholder="제목을 입력하세요."
+		<form action="./write" method="post" onsubmit="return check()">
+			
+			<input id="title" type="text" name="title" placeholder="제목을 입력하세요."
 				maxlength="30">
+			<span id="msg"></span>
+
 			<textarea name="content" id="summernote"></textarea>
-			<button class="button" type="submit" onclick="location.href='./board'">저장하기</button>
+			<span id="msg2"></span>
+
+			<button class="button" type="submit" >저장하기</button>
 			<!-- type="submit" => 제출버튼. 폼데이터로 데이터 전송 -->
 		</form>
 	</div>
