@@ -22,8 +22,8 @@ public class BoardService {
 	private Util util; // 컴포넌트 Util과 연결했습니다.
 
 	// 보드 리스트 불러오는 메소드
-	public List<BoardDTO> boardList() {
-		return boardDAO.boardList(); // DAO가 대신 일한다.
+	public List<BoardDTO> boardList(PageDTO page) {
+		return boardDAO.boardList(page); // DAO가 대신 일한다.
 	}
 
 	public BoardDTO detail(BoardDTO dto2) {
@@ -86,6 +86,10 @@ public class BoardService {
 	public void edit(BoardDTO dto) {
 		boardDAO.edit(dto);
 		
+	}
+
+	public int totalCount() {
+		return boardDAO.totalCount();
 	}
 
 

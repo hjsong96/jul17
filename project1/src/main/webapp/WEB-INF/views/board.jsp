@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +15,23 @@
 <link rel="stylesheet" href="./css/board.css">
 <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+
+<script type="text/javascript">
+	function linkPage(pageNo){
+		location.href = "./board?pageNo="+pageNo;
+	}	
+</script>
+
 </head>
 <body>
 	<%@ include file="menu.jsp"%>
-	<h1 style="border-left: 15px solid #EF9A9A; padding: 0 10px 3px 10px; font-weight: bold;">
-	Board 화면입니다.
-	</h1>
+	<div class="board-div">
+	<h1
+		style="border-left: 15px solid #EF9A9A; padding: 0 10px 3px 10px; font-weight: bold;">
+		Board 화면입니다.</h1>
 	<%-- 길이 검사 : ${fn:length(list) } --%>
-	<div>
+	<%-- ${paginationInfo } --%>
+	<div class="top-img">
 		<img alt="heart" src="./img/heart.gif" height="100px";>
 	</div>
 	<c:choose>
@@ -45,15 +55,24 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<div class="page_wrap">
+				<div class="page_nation">
+					<ui:pagination paginationInfo="${paginationInfo}" type="image"
+						jsFunction="linkPage" />
+				</div>
+			</div>
 		</c:when>
-		<c:otherwise><h1>출력할 데이터가 없습니다.</h1></c:otherwise>
+		<c:otherwise>
+			<h1>출력할 데이터가 없습니다.</h1>
+		</c:otherwise>
 	</c:choose>
-	
+
 	<!-- 로그인 했다면 글쓰기 버튼이 보여요 -->
+	<br>
 	로그인한 이름 : ${sessionScope.mname } / ${sessionScope.mid }
 	<c:if test="${sessionScope.mname ne null}">
 		<button class="button" onclick="location.href='./write'">글쓰기</button>
 	</c:if>
-
+	</div>
 </body>
 </html>

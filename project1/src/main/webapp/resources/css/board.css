@@ -5,6 +5,12 @@ font-family: Sandoll Studywithme;
 font-weight: 400;
 }
 
+.board-div{
+	margin:0 auto;
+	width: 800px;
+	height: auto;
+}
+
 table{
 	margin: 0 auto;
 	width: 100%;
@@ -37,8 +43,42 @@ tr:hover {
 	cursor: pointer;
 }
 
-div {
-	text-align: center;
+.top-img{
+	text-align: center;	
+	margin : 10px;
+}
+
+.page_wrap {
+	text-align:center;
+	font-size:0;
+	margin-top : 15px;
+ }
+.page_nation {
+	display:inline-block;
+}
+.page_nation :hover {
+	background-color: #FFCDD2;
+	cursor: pointer;
+	font-weight: bolder;
+}
+
+.page_nation a {
+	display:block;
+	margin:0 3px;
+	float:left;
+	border:1px solid #e6e6e6;
+	width:28px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	background-color:#fff;
+	font-size:13px;
+	color:#999999;
+	text-decoration:none;
+}
+
+.page_nation img{
+	vertical-align: middle;
 }
 
 .button{
