@@ -1,4 +1,4 @@
-package com.hadine.pro1;
+package com.hadine.login;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -70,7 +70,10 @@ public class LoginController {
 		return "redirect:index";
 	}
 	
-	
+	@GetMapping("/join")
+	public String join() {
+		return "join";
+	}
 	
 	
 }

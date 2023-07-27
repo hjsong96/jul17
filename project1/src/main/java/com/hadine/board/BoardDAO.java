@@ -1,7 +1,6 @@
-package com.hadine.pro1;
+package com.hadine.board;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;

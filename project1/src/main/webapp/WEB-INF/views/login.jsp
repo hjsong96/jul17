@@ -60,7 +60,7 @@ function check() {
 		<div id="search">
 			<a href="" >아이디 찾기 |</a>	
 			<a href="">비밀번호 찾기 |</a>
-			<a href="">회원가입</a>
+			<a href="./join">회원가입</a>
 		</div>
 			<button type="submit" class="button">로&nbsp;&nbsp;&nbsp;그&nbsp;&nbsp;&nbsp;인</button>
 			<span id="msg"></span>

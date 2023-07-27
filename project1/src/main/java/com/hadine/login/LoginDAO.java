@@ -1,4 +1,4 @@
-package com.hadine.pro1;
+package com.hadine.login;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;

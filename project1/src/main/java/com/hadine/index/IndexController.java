@@ -1,4 +1,4 @@
-package com.hadine.pro1;
+package com.hadine.index;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

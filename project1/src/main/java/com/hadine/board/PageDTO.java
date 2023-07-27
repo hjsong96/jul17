@@ -1,4 +1,4 @@
-package com.hadine.pro1;
+package com.hadine.board;
 
 public class PageDTO {
 

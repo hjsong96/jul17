@@ -1,15 +1,15 @@
-package com.hadine.pro1;
+package com.hadine.board;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.hadine.util.Util;
 
 @Service("boardService") // 서비스의 이름을 지정
 public class BoardService {

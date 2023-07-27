@@ -1,4 +1,4 @@
-package com.hadine.pro1;
+package com.hadine.login;
 
 public class LoginDTO {
 	private int m_no, m_grade, count; //count = 로그인 시 0 or 1 이 나옵니다. 

@@ -1,8 +1,16 @@
-package com.hadine.pro1;
+package com.hadine.board;
 
 public class BoardDTO {
 	private int bno, blike;
-	private String btitle, m_name, m_id, bcontent, bdate, bip;
+	private String btitle, m_name, m_id, bcontent, bdate, bip, uuid;
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 
 	public int getBno() {
 		return bno;

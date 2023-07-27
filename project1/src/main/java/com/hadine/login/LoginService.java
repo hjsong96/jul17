@@ -1,4 +1,4 @@
-package com.hadine.pro1;
+package com.hadine.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

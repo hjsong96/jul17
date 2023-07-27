@@ -1,7 +1,4 @@
-package com.hadine.pro1;
-
-import java.nio.charset.Charset;
-import java.util.ArrayList;
+package com.hadine.util;
 
 import javax.servlet.http.HttpServletRequest;
 
