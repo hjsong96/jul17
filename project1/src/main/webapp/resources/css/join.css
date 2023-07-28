@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+*{
+font-family: Sandoll Studywithme;
+font-weight: 400;
+}
+
+
+.all-area{
+	margin: 0 auto;
+	padding-top: 50px;
+	width: 500px;
+	height: 600px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.top-area h1{
+	color: #EF9A9A;
+	font-weight: bold;
+}
+
+.eat img {
+	margin-bottom: 30px;	
+}
+
+input{
+	width: 250px;
+	height: 30px;
+}
+
+#mbti{
+	width: 260px;
+	height: 30px;
+}
+
+.gender-area {
+    padding: 5px 10px;
+}
+.gender-area input[type=radio]{
+    display: none;
+}
+.gender-area input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 30px;
+    width: 124px;
+    margin: 2px;
+    border: 1px solid #333;
+    line-height: 30px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+}
+.gender-area input[type=radio]+label{
+    background-color: #fff;
+    color: #333;
+}
+.gender-area input[type=radio]:checked+label{
+    background-color: #EF9A9A;
+    color: #fff;
+}
+
+.bottombox-area button{
+	width: 260px;
+	height: 30px;
+	
+}
