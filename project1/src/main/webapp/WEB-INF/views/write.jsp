@@ -61,6 +61,7 @@ function check() {
 <body>
 <%@ include file="menu.jsp" %>
 	<h1 style="border-left:15px solid #EF9A9A; padding:0 10px 3px 10px; font-weight:bold; font-family: Sandoll Studywithme;">Board 화면입니다.</h1>
+	<button class="btn btn-info">버튼</button>
 	<div class="img">
 		<img alt="mind" src="./img/mind.gif" height="100px";>
 	</div>
@@ -74,7 +75,7 @@ function check() {
 			<textarea name="content" id="summernote"></textarea>
 			<span id="msg2"></span>
 
-			<button class="button" type="submit" >저장하기</button>
+			<button class="button btn btn-primary" type="submit" >저장하기</button>
 			<!-- type="submit" => 제출버튼. 폼데이터로 데이터 전송 -->
 		</form>
 	</div>
