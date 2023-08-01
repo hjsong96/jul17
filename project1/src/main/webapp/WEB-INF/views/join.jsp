@@ -8,6 +8,43 @@
 <title>Register</title>
 <link rel="stylesheet" href="./css/menu.css">
 <link rel="stylesheet" href="./css/join.css">
+<script src="./js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#idCheck").click(function(){
+		let id = $("#id").val();
+		if (id == "" || id.length < 5 ) {
+			//alert("5글자 이상이어야 합니다.")
+			$("#resultMSG").text("아이디는 5글자 이상이어야 합니다.");
+			$("#resultMSG").css("color", "red");
+			$("#id").focus();
+		} else {
+			$.ajax({
+				url:"./checkID",  //나 어디로 
+				type:"post",    // 무슨 타입으로
+				data: {"id": id}, //이름은 id, 뒤는 실제 값   -> checkID?id=hadine
+				dataType: "html", //되돌아오는 타입은 어떤 타입으로 되돌아올거야?
+				success: function(data){
+					$("#resultMSG").text("data : " + data);
+				}, //성공했을 때
+				error: function(request, status, error){
+					$("#resultMSG").text("error : " + error);
+					console.log(status);
+				} //실패했을 때
+			});
+			
+			//$("#resultMSG").text("사용 가능한 아이디 입니다.");
+			//$("#resultMSG").css("color", "green");
+		}
+		return false
+	});
+});
+
+
+</script>
+
+
+
 </head>
 <body>
 	<%@ include file="menu.jsp"%>
@@ -21,12 +58,14 @@
 		<div class="topbox-area">
 			<div class="id-area">
 				<input type="text" name="id" id="id" placeholder="아이디">
+				<button id="idCheck">중복검사</button><br>
+				<span id="resultMSG"></span>
 			</div>
 			<div class="pw-area">
 				<input type="password" name="pw" id="pw" placeholder="비밀번호">
 			</div>
 			<div class="pwCheck-area">
-				<input type="text" name="pwCheck" id="pwCheck" placeholder="비밀번호 재확인" >
+				<input type="password" name="pwCheck" id="pwCheck" placeholder="비밀번호 재확인" >
 			</div>
 		</div>
 		<div class="middlebox-area">

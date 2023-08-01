@@ -10,9 +10,12 @@ font-weight: 400;
 	margin: 0 auto;
 	padding-top: 50px;
 	width: 500px;
-	height: 600px;
+	height: 650px;
 	text-align: center;
 	box-sizing: border-box;
+	border-style : solid;
+	border-color: #FFCDD2;
+	border-radius: 15px;
 }
 
 .top-area h1{
@@ -28,6 +31,21 @@ input{
 	width: 250px;
 	height: 30px;
 }
+
+.id-area input{
+	width: 185px;
+	height: 30px;
+}
+
+.id-area button{
+	width: 60px;
+}
+
+#resultMSG{
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+
 
 #mbti{
 	width: 260px;
@@ -64,5 +82,4 @@ input{
 .bottombox-area button{
 	width: 260px;
 	height: 30px;
-	
-}
+} 
