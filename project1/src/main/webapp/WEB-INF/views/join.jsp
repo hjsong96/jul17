@@ -13,38 +13,40 @@
 $(function() {
 	$("#idCheck").click(function(){
 		let id = $("#id").val();
+		//console.log(id); //아이디 출력
+		//console.log(id.length); //아이디 글자수
 		if (id == "" || id.length < 5 ) {
-			//alert("5글자 이상이어야 합니다.")
-			$("#resultMSG").text("아이디는 5글자 이상이어야 합니다.");
-			$("#resultMSG").css("color", "red");
 			$("#id").focus();
+			$("#resultMSG").text("아이디는 5글자 이상이어야 합니다.");
+			$("#resultMSG").css("color", "red").css("font-weight", "bold").css("font-size", "13pt");
 		} else {
 			$.ajax({
-				url:"./checkID",  //나 어디로 
-				type:"post",    // 무슨 타입으로
-				data: {"id": id}, //이름은 id, 뒤는 실제 값   -> checkID?id=hadine
-				dataType: "html", //되돌아오는 타입은 어떤 타입으로 되돌아올거야?
+				url : "./checkID", //어디로 갈지
+				type : "post", //타입
+				data : {"id" : id}, //어떤 값으로
+				dataType : "json", // {result : 0}
 				success: function(data){
-					$("#resultMSG").text("data : " + data);
-				}, //성공했을 때
+					//alert(data.result); //데이터에서 result 값만 뽑겠다.
+					if (data.result == 1) {
+						$("#id").css("background-color", "red").focus();
+						$("#resultMSG").text("이미 등록된 아이디입니다.").css("color", "red").css("font-weight", "bold").css("font-size", "13pt");
+					} else {
+						$("#id").css("background-color", "white");
+						$("#resultMSG").text("사용가능한 아이디입니다.").css("color", "green").css("font-weight", "bold").css("font-size", "13pt");
+					}
+					//$("#resultMSG").text("성공시 결과값 : " + data);
+				}, //서버에서 날라오는 데이터이다.
 				error: function(request, status, error){
-					$("#resultMSG").text("error : " + error);
-					console.log(status);
-				} //실패했을 때
-			});
-			
-			//$("#resultMSG").text("사용 가능한 아이디 입니다.");
-			//$("#resultMSG").css("color", "green");
+					$("#resultMSG").text("오류가 발생했습니다. 가입할 수 없습니다.");
+				}
+			}); //ajax 시작
+			//비동기통신(일방적): 일방적으로 주거나 받기, 요청과 응답 순서 보장되지 x ex)롤 화면  
+			//동기통신: 턴이 넘어가는 것(주고받기), 요청과 응답 순서 보장 o ex)바둑
 		}
-		return false
+		return false; //멈추기
 	});
 });
-
-
 </script>
-
-
-
 </head>
 <body>
 	<%@ include file="menu.jsp"%>
@@ -59,7 +61,9 @@ $(function() {
 			<div class="id-area">
 				<input type="text" name="id" id="id" placeholder="아이디">
 				<button id="idCheck">중복검사</button><br>
+			<div style="height: 40px">
 				<span id="resultMSG"></span>
+			</div>
 			</div>
 			<div class="pw-area">
 				<input type="password" name="pw" id="pw" placeholder="비밀번호">
