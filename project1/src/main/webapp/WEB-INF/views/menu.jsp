@@ -12,6 +12,7 @@
 					<li onclick="link('mooni')">문의사항</li>
 					<li onclick="link('notice')">공지</li>
 					<li onclick="link('members')">회원리스트</li>
+					<li onclick="link('practice')">연습용</li>
 				</ul>
 			</div>
 			<div class ="right_menu" >

@@ -82,4 +82,45 @@ font-weight: 400;
 	transition: 0.5s;
 }
 
+.comments{
+
+}
+
+.c_name, c_comment{
+
+}
+
+.c_name{
+}
+
+.c_date {
+
+}
+
+.c_comment{
+
+}
+
+.commentBox{
+	width: 800px;
+	height: 150px;
+	padding: 10px;
+	background-color:#EF9A9A;
+	padding: 10px;
+	box-sizing: border-box;
+	
+}
+
+#commenttextarea {
+	width: 660px;
+	height: 120px;
+	float: left;
+}
+
+#comment{
+	width: 100px;
+	height: 130px;
+	float: right;
+	font-size: 25px;
+}
 
