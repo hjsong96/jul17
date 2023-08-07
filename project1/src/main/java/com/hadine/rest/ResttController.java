@@ -3,6 +3,8 @@ package com.hadine.rest;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hadine.board.BoardService;
 import com.hadine.login.LoginService;
+import com.hadine.util.Util;
 
 @RestController //전체 바디 모두 responsebody 를 쓴다는 뜻, json 형태로 객체 반환
 @Controller
@@ -22,6 +25,13 @@ public class ResttController {
 	
 	@Autowired
 	private LoginService loginService;
+		
+	@Autowired
+	private BoardService boardService;
+
+	@Autowired
+	private Util util;
+	
 	
 	
 	//아이디 중복검사 2023-08-02
@@ -37,6 +47,13 @@ public class ResttController {
 		System.out.println(json.toString());
 		
 		return json.toString(); // {result : 1}
+	}
+	
+	//자바스크립트로 만든 것.
+	@PostMapping("/checkID2")
+	public String checkID2(@RequestParam("id") String id) {
+		int result = loginService.checkID(id);
+		return result+"";
 	}
 	
 	//boardList2
@@ -57,6 +74,27 @@ public class ResttController {
 	
 	//객체 : { 키: 값, 키2 : 값, .....}
 	
-	
-	
+	@PostMapping("/cdelR")
+	public String cdelR(@RequestParam Map<String, Object> map, HttpSession session) {
+		int result = 0;
+		if (session.getAttribute("mid") !=null) {
+			if (map.containsKey("bno") && map.get("cno") !=null &&
+					!(map.get("bno").equals("")) && !(map.get("cno").equals("")) && 
+				util.isNum(map.get("bno")) && util.isNum(map.get("cno"))) {
+				
+				System.out.println(map);
+				
+				//System.out.println("여기로 들어왔습니다.");
+				map.put("mid", session.getAttribute("mid"));
+				result = boardService.cdel(map);
+				System.out.println("삭제 결과: " + result);
+				
+				JSONObject json = new JSONObject();
+				json.put("result", result);
+				
+				return json.toString();
+			}
+		}
+		return result+"";
+	}
 }
