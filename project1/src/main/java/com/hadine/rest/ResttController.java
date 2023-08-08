@@ -97,4 +97,17 @@ public class ResttController {
 		}
 		return result+"";
 	}
+	
+	@PostMapping("/ceditR")
+	public String ceditR(@RequestParam Map<String, Object> map, HttpSession session) {
+		int result = 0;
+		if (map.containsKey("bno") && map.containsKey("cno") &&
+				!(map.get("bno").equals("")) && !(map.get("cno").equals("")) ) {
+			map.put("mid", session.getAttribute("mid"));
+			System.out.println(map);
+			result = boardService.cedit(map);
+			System.out.println(result);
+		}
+		return "0";
+	}
 }

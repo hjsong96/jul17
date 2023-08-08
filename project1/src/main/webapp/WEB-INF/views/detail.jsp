@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>Detail</title>
 <link rel="stylesheet" href="./css/menu.css">
-<link rel="stylesheet" href="./css/detail.css">
+<link rel="stylesheet" href="./css/detail.css?ver=0.2">
 <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
 <script src="./js/jquery-3.7.0.min.js"></script>
@@ -41,7 +41,7 @@
 	
 	
 	$(function(){
-/* 		$(".commentBox").hide(); */
+ 		$(".commentBox").hide(); 
 		$("#openComment").click(function(){
 			$(".commentBox").show("slow");
 			$("#openComment").remove();
@@ -76,10 +76,96 @@
 			});
 		}
 	});
-		
-		
 		//댓글 수정 버튼 만들기 = 반드시 로그인 하고, 자신의 글인지 확인하는 검사 구문 필요.
+		//.cedit
+		$(".cedit1").click(function() {
+			//alert("!")
+			// 변수만들기 bno, cno, content, 글쓰기 수정 html
+			const bno = "${dto.bno}"; //jstl이 먼저 값을 넣어주고 이후에 string 처리 된다.
+			const cno = $(this).parent().siblings(".c_id").text();
+			let content = $(this).parents(".commentHead").siblings(".c_comment").text();
+			let recommentBox = '<div class="recommentBox">';
+			recommentBox += '<form action="./cedit" method="post">';
+			recommentBox += '<textarea id="recommenttextarea" name="recomment" placeholder="댓글을 입력하세요">'+content+'</textarea>';
+			recommentBox += '<input type="hidden" id="bno" name="bno" value="${dto.bno}">';
+			recommentBox += '<input type="hidden" id="cno" name="cno" value="'+cno+'">';
+			recommentBox += '<button type="submit" id="recomment">댓글 수정하기</button>';
+			recommentBox += '</form>';
+			recommentBox += '</div>';
+			
+			//alert(bno + "/" + cno + "/" + content);
+			//내 위치 찾기
+			let commentDIV = $(this).parents(".comment");
+			//commentDIV.css("color", "red");
+			commentDIV.after(recommentBox);
+			commentDIV.remove();
+			//수정, 삭제, 댓글창 열기 모두 삭제하기
+			$(".cedit").remove();
+			$(".cdel").remove();
+			$("#openComment").remove();
+			
+		});
 		
+		//댓글 수정 다른 방법 ajax
+		$(".cedit").click(function() {
+			if (confirm("수정하시겠습니까?")) {
+				//변수만들기 bno, cno, content, 글쓰기 수정 html
+				const bno = "${dto.bno }";
+				const cno = $(this).parent().siblings(".c_id").text();
+				
+				let commentDIV = $(this).parents(".comment");
+				commentDIV.css("color", "red");
+								
+ 				$.ajax({
+					url: "./ceditR",
+					type: "post",
+					data: {bno: bno, cno : cno},
+					dataType: "json", 
+					success:function(data){
+						if (data.result == 1) {
+							let content = $(this).parents(".commentHead").siblings(".c_comment").text();
+							let recommentBox = '<div class="recommentBox">';
+							recommentBox += '<form action="./cedit" method="post">';
+							recommentBox += '<textarea id="recommenttextarea" name="recomment" placeholder="댓글을 입력하세요">'+content+'</textarea>';
+							recommentBox += '<input type="hidden" id="bno" name="bno" value="${dto.bno}">';
+							recommentBox += '<input type="hidden" id="cno" name="cno" value="'+cno+'">';
+							recommentBox += '<button type="submit" id="recomment">댓글 수정하기</button>';
+							recommentBox += '</form>';
+							recommentBox += '</div>';
+							let commentDIV = $(this).parents(".comment");
+							commentDIV.after(recommentBox);
+							commentDIV.remove();
+							//수정, 삭제, 댓글창 열기 모두 삭제하기
+							$(".cedit").remove();
+							$(".cdel").remove();
+							$("#openComment").remove(); 
+						
+						} else {
+							alert("통신에 문제가 발생했습니다. 다시 시도해주세요.")
+						}
+					},
+					error:function(error){
+						alert("에러가 발생했습니다.") + error
+					}
+				});
+				
+			}
+			
+		});
+		
+		
+		
+		
+		//댓글쓰기 몇 글자 썼는지 확인하는 코드 2023-08-08 프레임우크 프로그래밍
+		//keyup 텍스트 입력창 : #commenttextarea, 버튼: #comment
+		$("#commenttextarea").keyup(function(){//키를 놓을 때 이벤트가 발생
+			let text = $(this).val(); 
+			if (text.length > 100) {//값의 길이를 뽑아서 text에 저장
+				alert("100글자 초과입니다.");
+				$(this).val(   text.substr(0,100)   ); 
+			}
+			$("#comment").text("글쓰기"+ text.length +"/100");
+		});
 	});
 </script>
 </head>
@@ -121,7 +207,8 @@
 										님
 										<c:if
 											test="${sessionScope.mid ne null && sessionScope.mid eq c.m_id}">
-											<img alt="수정" src="./img/edit2.png" onclick="cedit()"> &nbsp;
+											<img alt="수정" src="./img/edit2.png" class="cedit" onclick="cedit()"> &nbsp;
+											<form action=""></form>
 											<img alt="삭제" src="./img/delete2.png" class="cdel"
 												onclick="cdel1(${c.c_no})">
 										</c:if>

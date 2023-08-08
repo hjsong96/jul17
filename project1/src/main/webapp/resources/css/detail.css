@@ -83,7 +83,7 @@ font-weight: 400;
 	transition: 0.5s;
 }
 
-.commentBox{
+.commentBox, .recommentBox{
 	width: 100%;
 	height: 150px;
 	padding: 10px;
@@ -93,13 +93,13 @@ font-weight: 400;
 	
 }
 
-#commenttextarea {
+#commenttextarea, #recommenttextarea {
 	width: 660px;
 	height: 124px;
 	float: left;
 }
 
-#comment{
+#comment, #recomment{
 	width: 80px;
 	height: 130px;
 	float: right;
